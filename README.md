@@ -61,10 +61,10 @@ Next, we register the CSV file as a dataset within Azure ML, so that it can be u
 ### Results
 36 models were tested and Voting Ensemble was the best performing model found using AutoML, achieving an accuracy of 97.06%.
 
-The parameters are described below: REMEMBER TO VIEW OTHER METRICS!
-- AUC macro: TO BE UPDATED
-- AUC micro: TO BE UPDATED
-- AUC weighted: TO BE UPDATED
+The parameters are described below:
+- AUC macro: 99.267%
+- AUC micro: 99.602%
+- AUC weighted: 99.267%
 
 AzureML RunDetails Widget
 ![alt text](https://github.com/riokorb/nd00333-capstone/blob/master/img01.PNG?raw=true)
@@ -118,7 +118,6 @@ More extensive data cleaning and featurization efforts could allow us to achieve
 We could also revisit the sampling methods and consider custom cross-validation strategies to try and mitigate the impact of imbalanced data on performance metrics.
 
 ## Model Deployment
-TODO: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 For this project, the Voting Ensemble model from our AutoML experiment achieved the best accuracy and will be selected for deployment as a webservice.
 
 To do this, we register this best-performing model in our workspace and make use of the InferenceConfig from our score.py file for the deployment.
@@ -132,10 +131,5 @@ Value returned after sending sample input/payload
 ![alt text](https://github.com/riokorb/nd00333-capstone/blob/master/sampleinput.PNG?raw=true)
 
 ## Screen Recording
-TODO Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
 
-A working model
-Demo of the deployed model
-Demo of a sample request sent to the endpoint and its response
-
-Link to screencast TO BE UPDATED
+[Link to Screen Recording](https://drive.google.com/file/d/1Gk4nKMceHUji6B0y5AZ93534ZDjqv4wu/view?usp=sharing)
