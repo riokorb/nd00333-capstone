@@ -49,22 +49,36 @@ Next, we register the CSV file as a dataset within Azure ML, so that it can be u
 
 ### Settings:
 - Primary metric is set to accuracy, which is the metric AutoML will try to optimize for.
+- Early stopping is set to true, enabling this setting will terminate the training when the score is no longer improving.
 - The maximum number of concurrent iterations is set to 5.
-- The experiment is set to timeout in 10 minutes, which is the total time taken all iterations combined can take before the experiment terminates
 
 ### Configuration:
 - AutoML is configured to solve a classification task.
-- The label column is ATTRITION_FLAG.
-- Early stopping is set to true, enabling this setting will terminate the training when the score is no longer improving.
+- The label column is 'Attrition_Flag', which can take on the value of either 'Existing Customer' or 'Attrited Customer'.
 - There are 3 cross validations performed to evaluate the predictive model.
+- The experiment is set to timeout in 30 minutes, which is the total time taken all iterations combined can take before the experiment terminates
 
 ### Results
 36 models were tested and Voting Ensemble was the best performing model found using AutoML, achieving an accuracy of 97.06%.
 
-The parameters are described below:
+The other metrics are described below:
 - AUC macro: 99.267%
 - AUC micro: 99.602%
 - AUC weighted: 99.267%
+
+### Parameters
+
+The best performing Soft Voting Ensemble algorithm used a LightGBM Classifier with a MaxAbsScaler wrapper.
+Other parameters are listed below:
+- Steps: MaxAbsScaler with copy = True and LightGBMClassifier with boosting_type = Gradient Boosting Decision Tree (GBDT)
+- Flatten_transform: None
+- Weights: 
+```
+[0.2857142857142857, 0.07142857142857142,
+0.21428571428571427, 0.07142857142857142,
+0.07142857142857142, 0.14285714285714285,
+0.07142857142857142, 0.07142857142857142])
+```
 
 AzureML RunDetails Widget
 ![alt text](https://github.com/riokorb/nd00333-capstone/blob/master/img01.PNG?raw=true)
@@ -80,9 +94,10 @@ Run Details
 In this project, we created a Support Vector Machine (SVM) model from scikit-learn. 
 It was selected for this project as it is a versatile supervised learning method that works well in high dimensional spaces, and can be applied to solve classification problems.
 
+### Parameters
+
 The parameters used were:
 - Kernel type, where the choice of kernel affects the mapping of observations into the feature space.
-- 
 - Regularization parameter C, which is a peanlty parameter that tells the SVM how much we want to avoid misclassifying each training example eg. via overfitting.
 
 The parameters were then tuned based on the choices below:
@@ -132,4 +147,4 @@ Value returned after sending sample input/payload
 
 ## Screen Recording
 
-[Link to Screen Recording](https://drive.google.com/file/d/1Gk4nKMceHUji6B0y5AZ93534ZDjqv4wu/view?usp=sharing)
+[Link to Screen Recording](https://drive.google.com/file/d/14P32IMIh9BowA4rOnNlXEJdxtWfZpdnx/view?usp=sharing)
