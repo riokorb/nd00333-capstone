@@ -56,20 +56,42 @@ Next, we register the CSV file as a dataset within Azure ML, so that it can be u
 - AutoML is configured to solve a classification task.
 - The label column is 'Attrition_Flag', which can take on the value of either 'Existing Customer' or 'Attrited Customer'.
 - There are 3 cross validations performed to evaluate the predictive model.
-- The experiment is set to timeout in 30 minutes, which is the total time taken all iterations combined can take before the experiment terminates
+- The experiment is set to timeout in 20 minutes, which is the total time taken all iterations combined can take before the experiment terminates.
+
+### Parameters
+Consequently, the parameters are as follows:
+
+- Type of Task `task`: Classification
+- Primary Metric `primary_metric`: accuracy
+- Metric Operation `metric_operation`: maximise
+- Training Data used `training_data`: dataset (refer to Bankchurners.csv)
+- Name of the Label Column `label_column_name`: Attrition_Flag
+- Compute Target to run the AutoML experiment on `compute_target`: demo-cluster (compute cluster created for this experiment)
+- Sample Weight Column `weight_column_name`: Null
+- Number of Cross Validations `n_cross_validations`: 3
+- Featurization Config `featurization`: Auto
+- Maximum number of threads to use for a given training iteration `max_cores_per_iteration`: 1
+- Maximum number of iterations that would be executed in parallel `max_concurrent_iterations`: 5
+- Maximum time in minutes that each iteration can run for before it terminates `iteration_timeout_minutes`: null
+- Maximum time in minutes that all iterations combined can take before the experiment terminates`experiment_timeout_minutes`: 20
+- Supported Models `supported_models`:
+```
+["KNN","SGD","AveragedPerceptronClassifier","LinearSVM","ExtremeRandomTrees","LightGBM","TensorFlowDNN","TensorFlowLinearClassifier","RandomForest","LogisticRegression","SVM","XGBoostClassifier","BernoulliNaiveBayes","GradientBoosting","DecisionTree","MultinomialNaiveBayes"]
+```
+- Whether to enable early termination if the score is not improving in the short term `enable_early_stopping`: True
+- Number of iterations for the early stopping window `early_stopping_n_iters`: 10
+- The verbosity level for writing to the log file `verbosity`: 20
 
 ### Results
 36 models were tested and Voting Ensemble was the best performing model found using AutoML, achieving an accuracy of 97.06%.
+The best performing Soft Voting Ensemble algorithm used a LightGBM Classifier with a MaxAbsScaler wrapper.
 
 The other metrics are described below:
 - AUC macro: 99.267%
 - AUC micro: 99.602%
 - AUC weighted: 99.267%
 
-### Parameters
-
-The best performing Soft Voting Ensemble algorithm used a LightGBM Classifier with a MaxAbsScaler wrapper.
-Other parameters are listed below:
+The additional characteristics of the best performing model are described below:
 - Steps: MaxAbsScaler with copy = True and LightGBMClassifier with boosting_type = Gradient Boosting Decision Tree (GBDT)
 - Flatten_transform: None
 - Weights: 
