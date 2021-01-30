@@ -61,15 +61,15 @@ Next, we register the CSV file as a dataset within Azure ML, so that it can be u
 ### Parameters
 Consequently, the parameters are as follows:
 
-- Type of Task `task`: Classification
+- Type of Task `task`: classification
 - Primary Metric `primary_metric`: accuracy
 - Metric Operation `metric_operation`: maximise
 - Training Data used `training_data`: dataset (refer to Bankchurners.csv)
 - Name of the Label Column `label_column_name`: Attrition_Flag
 - Compute Target to run the AutoML experiment on `compute_target`: demo-cluster (compute cluster created for this experiment)
-- Sample Weight Column `weight_column_name`: Null
+- Sample Weight Column `weight_column_name`: null
 - Number of Cross Validations `n_cross_validations`: 3
-- Featurization Config `featurization`: Auto
+- Featurization Config `featurization`: auto
 - Maximum number of threads to use for a given training iteration `max_cores_per_iteration`: 1
 - Maximum number of iterations that would be executed in parallel `max_concurrent_iterations`: 5
 - Maximum time in minutes that each iteration can run for before it terminates `iteration_timeout_minutes`: null
