@@ -12,7 +12,6 @@ Two models will be created: one using Automated ML (denoted as AutoML from now o
 ### Overview
 We will be using a dataset from Kaggle located [here](https://www.kaggle.com/sakshigoyal7/credit-card-customers), which comprises of 10,000 customers mentioning their age, salary, marital_status, credit card limit, credit card category, etc.
 
-
 ### Task
 The goal is to predict if customers are likely to churn from their credit card services.
 The original dataset comprises 23 columns, but we have removed the last 2 columns (NAIVE BAYES CLAS...) which appear to be derived fields and do not gel with the other features in the dataset.
@@ -120,7 +119,7 @@ It was selected for this project as it is a versatile supervised learning method
 
 The parameters used were:
 - Kernel type, where the choice of kernel affects the mapping of observations into the feature space.
-- Regularization parameter C, which is a peanlty parameter that tells the SVM how much we want to avoid misclassifying each training example eg. via overfitting.
+- Regularization parameter C, which is a penalty parameter that tells the SVM how much we want to avoid misclassifying each training example eg. via overfitting.
 
 The parameters were then tuned based on the choices below:
 - Kernel type = choice('linear', 'rbf', 'poly', 'sigmoid'),
@@ -129,7 +128,7 @@ The parameters were then tuned based on the choices below:
 ### Results
 The best model from the hyperdrive experiment achieved an accuracy of 88.48%.
 
-The parameters are described below: REMEMBER TO VIEW OTHER METRICS!
+The parameters are described below:
 - Kernel type = Linear
 - C (represented by penalty) = 1
 
